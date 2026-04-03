@@ -69,6 +69,38 @@ def ensure_user_assets() -> None:
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(src, dst)
 
+    # If the user already has an app_config.json but it lacks newly added fields
+    # (e.g., remote_latest_data.latest_data_url), patch only the missing/empty parts.
+    try:
+        src_cfg = resource_root() / "config" / "app_config.json"
+        dst_cfg = user / "config" / "app_config.json"
+        if src_cfg.exists() and dst_cfg.exists():
+            src_raw = json.loads(src_cfg.read_text(encoding="utf-8"))
+            dst_raw = json.loads(dst_cfg.read_text(encoding="utf-8"))
+
+            src_remote = ((src_raw.get("app", {}) or {}).get("remote_latest_data", {}) or {})
+            dst_remote = ((dst_raw.get("app", {}) or {}).get("remote_latest_data", {}) or {})
+
+            src_url = str(src_remote.get("latest_data_url", "") or "").strip()
+            dst_url = str(dst_remote.get("latest_data_url", "") or "").strip()
+
+            # If user config doesn't have a URL (older version), copy it over.
+            if src_url and not dst_url:
+                dst_raw.setdefault("app", {})
+                dst_raw["app"].setdefault("remote_latest_data", {})
+                dst_raw["app"]["remote_latest_data"].setdefault("enabled", True)
+                dst_raw["app"]["remote_latest_data"]["latest_data_url"] = src_url
+                # Keep user timeout if set; otherwise take default.
+                if "timeout_sec" not in dst_raw["app"]["remote_latest_data"]:
+                    if "timeout_sec" in src_remote:
+                        dst_raw["app"]["remote_latest_data"]["timeout_sec"] = src_remote["timeout_sec"]
+
+                dst_cfg.parent.mkdir(parents=True, exist_ok=True)
+                dst_cfg.write_text(json.dumps(dst_raw, ensure_ascii=False, indent=2), encoding="utf-8")
+    except Exception:
+        # Non-fatal: if patching fails, app can still run with bundled data.
+        pass
+
 
 def sync_latest_data_from_resources() -> None:
     """

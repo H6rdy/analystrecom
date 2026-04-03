@@ -6,7 +6,7 @@
     "sync_on_start": true,
     "remote_latest_data": {
       "enabled": true,
-      "latest_data_url": "",
+      "latest_data_url": "https://raw.githubusercontent.com/H6rdy/analystrecom/main/data/latest_data.json",
       "timeout_sec": 20
     }
   },
