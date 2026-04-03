@@ -39,6 +39,10 @@ jobs:
 
       - name: Commit updated data
         run: |
+          # Some GitHub environments/jobs may still miss committer identity.
+          # Set again immediately before commit to be 100% robust.
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           if git diff --quiet; then
             echo "No changes to commit."
             exit 0
