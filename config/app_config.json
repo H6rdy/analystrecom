@@ -1,0 +1,42 @@
+{
+  "app": {
+    "theme": "dark",
+    "data_file": "data/latest_data.json",
+    "previous_data_file": "data/previous_data.json",
+    "sync_on_start": true,
+    "remote_latest_data": {
+      "enabled": true,
+      "latest_data_url": "",
+      "timeout_sec": 20
+    }
+  },
+  "telegram": {
+    "enabled": false,
+    "bot_token": "",
+    "chat_id": ""
+  },
+  "institutions": {
+    "tier1": [
+      "Goldman Sachs",
+      "JPMorgan",
+      "JP Morgan",
+      "Morgan Stanley",
+      "Bank of America",
+      "BofA",
+      "Citigroup",
+      "Citi",
+      "Barclays",
+      "UBS",
+      "Wells Fargo",
+      "Deutsche Bank",
+      "Jefferies"
+    ],
+    "tier1_weight": 1.35
+  },
+  "alerts": {
+    "notify_on_downgrade": true,
+    "notify_on_target_price_change": true,
+    "min_target_price_change_pct": 2.0
+  }
+}
+

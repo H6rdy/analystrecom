@@ -1,0 +1,6 @@
+PyQt6>=6.7
+python-telegram-bot>=21.0
+finvizfinance>=0.14.7
+requests>=2.31
+pandas>=2.2
+python-dateutil>=2.9
