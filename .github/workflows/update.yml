@@ -39,15 +39,13 @@ jobs:
 
       - name: Commit updated data
         run: |
-          # Some GitHub environments/jobs may still miss committer identity.
-          # Set again immediately before commit to be 100% robust.
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
           if git diff --quiet; then
             echo "No changes to commit."
             exit 0
           fi
           git add data/latest_data.json
-          git commit -m "chore(data): update latest S&P 500 analyst snapshot"
+          git -c user.name="github-actions[bot]" -c user.email="github-actions[bot]@users.noreply.github.com" commit \
+            -m "chore(data): update latest S&P 500 analyst snapshot" \
+            --author="github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
           git push
 
