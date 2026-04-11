@@ -1,13 +1,13 @@
 {
   "meta": {
     "source": "finviz",
-    "generated_at_utc": "2026-04-10T23:40:49Z"
+    "generated_at_utc": "2026-04-11T23:40:34Z"
   },
   "sp500_proxy": {
     "symbol": "SPY",
     "price": null,
     "change_pct": null,
-    "asof_utc": "2026-04-10T23:40:49Z"
+    "asof_utc": "2026-04-11T23:40:34Z"
   },
   "rows": [
     {
@@ -155,8 +155,8 @@
       "sector": "Technology",
       "industry": "Software - Application",
       "price": 188.79,
-      "target_price": 263.43,
-      "upside_pct": 39.53599237247736,
+      "target_price": 262.71,
+      "upside_pct": 39.15461624026695,
       "upside_bucket": "30%~40%",
       "recom_score": 2.76,
       "recom_score_weighted": 2.76,
@@ -284,8 +284,8 @@
       "target_price": 110.86,
       "upside_pct": 21.35741652983032,
       "upside_bucket": "20%~30%",
-      "recom_score": 2.21,
-      "recom_score_weighted": 2.21,
+      "recom_score": 2.17,
+      "recom_score_weighted": 2.17,
       "buy_or_better_count": 0,
       "tier1_buy_count": 0,
       "institutions": []
