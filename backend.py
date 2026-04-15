@@ -528,8 +528,9 @@ def build_dataset(config: AppConfig) -> Dict[str, Any]:
             continue
 
         # Slight pacing to reduce block risk
-        if idx % 25 == 0:
-            time.sleep(0.6)
+        time.sleep(1.0)  # 매 종목마다 1초 대기
+        if idx % 10 == 0:
+            time.sleep(3.0)  # 10개마다 추가 대기
 
     dataset = {
         "meta": {"source": "finviz", "generated_at_utc": utc_now_iso()},
@@ -645,27 +646,18 @@ def send_telegram_message(config: AppConfig, text: str) -> None:
 
 
 def sync_latest_data(config: AppConfig, force_live_fetch: bool = False) -> Dict[str, Any]:
-    """
-    App startup sync:
-    - If local file exists and is recent, use it.
-    - Otherwise fetch live via finviz and save.
-    """
     if force_live_fetch:
         try:
             dataset = build_dataset(config)
+            # 빈 결과면 저장하지 않고 기존 데이터 유지
+            if not dataset.get("rows"):
+                return load_json(config.data_file)
             save_json(config.data_file, dataset)
             return dataset
-        except Exception as e:
-            # Fallback to whatever snapshot exists, but surface the error to UI.
-            ds = load_json(config.data_file)
-            ds.setdefault("meta", {})
-            ds["meta"]["source"] = ds["meta"].get("source") or "fallback"
-            ds["meta"]["live_fetch_error"] = str(e)
-            return ds
+        except Exception:
+            return load_json(config.data_file)
 
     dataset = load_json(config.data_file)
-    # Default behavior: trust GitHub Actions-produced snapshot and load quickly.
-    # Only fetch live when explicitly requested via force_live_fetch.
     if dataset.get("rows") is None:
         return {"meta": {"source": "invalid", "generated_at_utc": None}, "rows": []}
     return dataset
