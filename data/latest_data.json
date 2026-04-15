@@ -1,13 +1,13 @@
 {
   "meta": {
     "source": "finviz",
-    "generated_at_utc": "2026-04-14T23:46:30Z"
+    "generated_at_utc": "2026-04-15T07:11:47Z"
   },
   "sp500_proxy": {
     "symbol": "SPY",
     "price": null,
     "change_pct": null,
-    "asof_utc": "2026-04-14T23:46:30Z"
+    "asof_utc": "2026-04-15T07:11:47Z"
   },
   "rows": [
     {
@@ -99,11 +99,11 @@
       "sector": "Technology",
       "industry": "Information Technology Services",
       "price": 190.37,
-      "target_price": 251.29,
-      "upside_pct": 32.00084046856122,
+      "target_price": 253.09,
+      "upside_pct": 32.94636759993696,
       "upside_bucket": "30%~40%",
-      "recom_score": 1.74,
-      "recom_score_weighted": 1.74,
+      "recom_score": 1.7,
+      "recom_score_weighted": 1.7,
       "buy_or_better_count": 0,
       "tier1_buy_count": 0,
       "institutions": []
@@ -169,11 +169,11 @@
       "sector": "Technology",
       "industry": "Software - Application",
       "price": 228.59,
-      "target_price": 331.86,
-      "upside_pct": 45.17695437245723,
+      "target_price": 330.76,
+      "upside_pct": 44.695743470843,
       "upside_bucket": "40%~50%",
-      "recom_score": 1.37,
-      "recom_score_weighted": 1.37,
+      "recom_score": 1.36,
+      "recom_score_weighted": 1.36,
       "buy_or_better_count": 0,
       "tier1_buy_count": 0,
       "institutions": []
@@ -281,11 +281,11 @@
       "sector": "Technology",
       "industry": "Software - Infrastructure",
       "price": 88.84,
-      "target_price": 110.67,
-      "upside_pct": 24.572264745610074,
+      "target_price": 111.55,
+      "upside_pct": 25.562809545249877,
       "upside_bucket": "20%~30%",
-      "recom_score": 2.21,
-      "recom_score_weighted": 2.21,
+      "recom_score": 2.17,
+      "recom_score_weighted": 2.17,
       "buy_or_better_count": 0,
       "tier1_buy_count": 0,
       "institutions": []
