@@ -648,8 +648,13 @@ def sync_latest_data(config: AppConfig, force_live_fetch: bool = False) -> Dict[
             dataset = build_dataset(config)
             save_json(config.data_file, dataset)
             return dataset
-        except Exception:
-            return load_json(config.data_file)
+        except Exception as e:
+            # Fallback to whatever snapshot exists, but surface the error to UI.
+            ds = load_json(config.data_file)
+            ds.setdefault("meta", {})
+            ds["meta"]["source"] = ds["meta"].get("source") or "fallback"
+            ds["meta"]["live_fetch_error"] = str(e)
+            return ds
 
     dataset = load_json(config.data_file)
     # Default behavior: trust GitHub Actions-produced snapshot and load quickly.
@@ -681,6 +686,27 @@ def run_portfolio_alerts(config: AppConfig, portfolio: List[str], new_dataset: D
     # Update previous snapshot to current.
     save_json(config.previous_data_file, {"meta": {"source": "app", "generated_at_utc": utc_now_iso()}, "rows": new_rows})
     return events
+
+
+def live_fetch_to_snapshot(config_json_path: str) -> None:
+    """
+    multiprocessing용 백그라운드 작업.
+
+    GUI 프로세스가 멈추지 않게 finviz 수집을 별도 프로세스로 실행하고,
+    결과를 `config.data_file`(대개 사용자 폴더의 latest_data.json)에 저장합니다.
+    실패 시에도 기존 스냅샷을 유지하되 `meta.live_fetch_error`에 에러를 남깁니다.
+    """
+    cfg = load_app_config(Path(config_json_path))
+    try:
+        ds = build_dataset(cfg)
+        save_json(cfg.data_file, ds)
+    except Exception as e:
+        ds = load_json(cfg.data_file)
+        ds.setdefault("meta", {})
+        ds["meta"]["source"] = ds["meta"].get("source") or "fallback"
+        ds["meta"]["live_fetch_error"] = str(e)
+        # Keep whatever we have, but persist the error marker.
+        save_json(cfg.data_file, ds)
 
 
 def derive_filter_values(rows: List[Dict[str, Any]]) -> Dict[str, List[str]]:

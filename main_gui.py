@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QThread, pyqtSignal
 from PyQt6.QtGui import QColor, QFont
 from PyQt6.QtWidgets import (
     QAbstractItemView,
@@ -28,6 +28,7 @@ from PyQt6.QtWidgets import (
 )
 
 import backend
+import multiprocessing as mp
 
 
 QSS_DARK = """
@@ -134,6 +135,20 @@ def num_str(v: Any) -> str:
     except Exception:
         return str(v)
 
+class _FetchWorker(QThread):
+    finished = pyqtSignal(dict)
+    error = pyqtSignal(str)
+
+    def __init__(self, config):
+        super().__init__()
+        self.config = config
+
+    def run(self):
+        try:
+            dataset = backend.sync_latest_data(self.config, force_live_fetch=True)
+            self.finished.emit(dataset)
+        except Exception as e:
+            self.error.emit(str(e))
 
 class MainWindow(QMainWindow):
     def __init__(self) -> None:
@@ -278,6 +293,10 @@ class MainWindow(QMainWindow):
         self.btn_live_refresh.clicked.connect(self._live_fetch)
         top_layout.addWidget(self.btn_live_refresh)
 
+        self.lbl_status = QLabel("")
+        self.lbl_status.setStyleSheet("color: #9E9E9E; font-size: 12px;")
+        top_layout.addWidget(self.lbl_status)
+
         layout.addWidget(self.topbar)
 
         self.table = QTableWidget(0, 10)
@@ -309,7 +328,7 @@ class MainWindow(QMainWindow):
     def _sync_and_refresh(self, initial: bool = False) -> None:
         try:
             self.config = backend.load_app_config(self.config_path)
-            backend.try_update_latest_data_remote(self.config)
+            remote_ok = backend.try_update_latest_data_remote(self.config)
 
             if self.config.sync_on_start or not initial:
                 self.dataset = backend.sync_latest_data(self.config, force_live_fetch=False)
@@ -330,24 +349,112 @@ class MainWindow(QMainWindow):
             self._refresh_market_bar()
             self._refresh_sidebar_summary()
             self._refresh_telegram_status()
+            self._set_status(
+                remote=remote_ok,
+                total_rows=len(rows),
+                screened=len(screened),
+                extra=None,
+            )
         except Exception as e:
             QMessageBox.critical(self, "Error", f"Failed to sync/refresh.\n\n{e}")
 
+    def _set_status(
+        self,
+        remote: Optional[bool] = None,
+        total_rows: Optional[int] = None,
+        screened: Optional[int] = None,
+        extra: Optional[str] = None,
+    ) -> None:
+        parts: List[str] = []
+        if remote is not None:
+            parts.append(f"Remote: {'OK' if remote else 'SKIP/FAIL'}")
+        if total_rows is not None:
+            parts.append(f"Rows: {total_rows}")
+        if screened is not None:
+            parts.append(f"Screened: {screened}")
+        if extra:
+            parts.append(extra)
+        self.lbl_status.setText(" | ".join(parts) if parts else "")
+
     def _live_fetch(self) -> None:
+        self.btn_live_refresh.setEnabled(False)
+        self.btn_live_refresh.setText("Fetching…")
         try:
             self.config = backend.load_app_config(self.config_path)
-            self.dataset = backend.sync_latest_data(self.config, force_live_fetch=True)
-            rows = self.dataset.get("rows", []) or []
-            self.filtered_rows = backend.screen_rows(rows)
-            filters = backend.derive_filter_values(rows)
-            self.sectors = filters["sectors"]
-            self.industries = filters["industries"]
-            self._refresh_filter_sources()
-            self._apply_filters()
-            self._refresh_market_bar()
-            QMessageBox.information(self, "Live Fetch", "Live data fetched and saved to data/latest_data.json")
         except Exception as e:
-            QMessageBox.critical(self, "Live Fetch Error", str(e))
+            QMessageBox.critical(self, "Config Error", str(e))
+            self.btn_live_refresh.setEnabled(True)
+            self.btn_live_refresh.setText("Live Fetch")
+            return
+
+        self._worker = _FetchWorker(self.config)
+        self._worker.finished.connect(self._on_live_fetch_done)
+        self._worker.error.connect(self._on_live_fetch_error)
+        self._worker.start()
+
+    def _on_live_fetch_done(self, dataset: dict) -> None:
+        self.dataset = dataset
+        rows = self.dataset.get("rows", []) or []
+        self.filtered_rows = backend.screen_rows(rows)
+        filters = backend.derive_filter_values(rows)
+        self.sectors = filters["sectors"]
+        self.industries = filters["industries"]
+        self._refresh_filter_sources()
+        self._apply_filters()
+        self._refresh_market_bar()
+        self.btn_live_refresh.setEnabled(True)
+        self.btn_live_refresh.setText("Live Fetch")
+        QMessageBox.information(self, "Live Fetch", "Live data fetched and saved.")
+
+    def _on_live_fetch_error(self, msg: str) -> None:
+        self.btn_live_refresh.setEnabled(True)
+        self.btn_live_refresh.setText("Live Fetch")
+        QMessageBox.critical(self, "Live Fetch Error", msg)
+
+    def _poll_live_fetch(self) -> None:
+        proc = getattr(self, "_live_process", None)
+        if proc is None:
+            if hasattr(self, "_live_poll_timer") and self._live_poll_timer is not None:
+                self._live_poll_timer.stop()
+            self.btn_live_refresh.setEnabled(True)
+            self.btn_refresh.setEnabled(True)
+            self._set_status(remote=None, extra="Live Fetch process missing.")
+            return
+
+        if proc.is_alive():
+            return
+
+        if hasattr(self, "_live_poll_timer") and self._live_poll_timer is not None:
+            self._live_poll_timer.stop()
+
+        # Worker process finished; reload snapshot from disk.
+        dataset = backend.load_json(self.config.data_file)
+        rows = dataset.get("rows", []) or []
+        screened = backend.screen_rows(rows)
+
+        filters = backend.derive_filter_values(rows)
+        self.sectors = filters["sectors"]
+        self.industries = filters["industries"]
+
+        self.dataset = dataset
+        self.filtered_rows = screened
+        self._refresh_filter_sources()
+        self._apply_filters()
+        self._refresh_market_bar()
+
+        extra = None
+        meta = dataset.get("meta", {}) or {}
+        if "live_fetch_error" in meta:
+            extra = f"Live Fetch error: {meta.get('live_fetch_error')}"
+
+        self.btn_live_refresh.setEnabled(True)
+        self.btn_refresh.setEnabled(True)
+
+        self._set_status(remote=None, total_rows=len(rows), screened=len(screened), extra=extra)
+        if extra:
+            QMessageBox.warning(self, "Live Fetch", "Live Fetch finished but fell back to existing snapshot.")
+        else:
+            QMessageBox.information(self, "Live Fetch", "Live data fetched and saved to latest_data.json.")
 
     def _refresh_filter_sources(self) -> None:
         current_sector = self.cmb_sector.currentText() if hasattr(self, "cmb_sector") else "All"
