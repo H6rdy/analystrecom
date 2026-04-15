@@ -393,6 +393,14 @@ class MainWindow(QMainWindow):
         self._worker.start()
 
     def _on_live_fetch_done(self, dataset: dict) -> None:
+        rows = dataset.get("rows", []) or []
+        if not rows:
+            self.btn_live_refresh.setEnabled(True)
+            self.btn_live_refresh.setText("Live Fetch")
+            QMessageBox.warning(self, "Live Fetch", 
+                "데이터 수집 실패 (finviz 연결 불가)\n기존 데이터를 유지합니다.\n\nGitHub Actions로 자동 갱신된 데이터를 사용하려면 Refresh를 누르세요.")
+            return
+        
         self.dataset = dataset
         rows = self.dataset.get("rows", []) or []
         self.filtered_rows = backend.screen_rows(rows)
@@ -595,8 +603,9 @@ class MainWindow(QMainWindow):
         self._render_table(filtered)
 
     def _render_table(self, rows: List[Dict[str, Any]]) -> None:
-        self.table.setRowCount(0)
-        tier1_set = {x.lower() for x in self.config.tier1_institutions}
+    self.table.setSortingEnabled(False)  # ← 추가
+    self.table.setRowCount(0)
+    tier1_set = {x.lower() for x in self.config.tier1_institutions}
 
         def add_item(row: int, col: int, text: str, color: Optional[QColor] = None) -> None:
             item = QTableWidgetItem(text)
@@ -608,6 +617,7 @@ class MainWindow(QMainWindow):
         for r in rows:
             row_idx = self.table.rowCount()
             self.table.insertRow(row_idx)
+
 
             t = str(r.get("ticker") or "")
             inst = r.get("institutions") or []
@@ -640,6 +650,8 @@ class MainWindow(QMainWindow):
 
             add_item(row_idx, 8, str(r.get("sector") or "-"), MUTED)
             add_item(row_idx, 9, str(r.get("industry") or "-"), MUTED)
+            
+            self.table.setSortingEnabled(True) 
 
 
 def main() -> None:
