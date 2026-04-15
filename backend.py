@@ -553,14 +553,11 @@ def parse_generated_at(meta: Dict[str, Any]) -> Optional[datetime]:
 
 def screen_rows(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """
-    요구 스크리닝:
-    - 2개 이상의 기관이 'Buy 이상' 의견
-    - Recom 점수 2.0 이하
+    스크리닝:
+    - Recom 점수 2.0 이하 (기관 의견 파싱 불안정으로 buy_or_better_count 조건 제거)
     """
     out = []
     for r in rows:
-        if int(r.get("buy_or_better_count") or 0) < 2:
-            continue
         recom = safe_float(r.get("recom_score"))
         if recom is None or recom > 2.0:
             continue
