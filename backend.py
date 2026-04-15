@@ -379,18 +379,30 @@ def fetch_overview_rows(tickers: List[str]) -> List[Dict[str, Any]]:
 
 
 def fetch_ticker_research_details(ticker: str) -> Dict[str, Any]:
-    """
-    Pulls per-ticker details (including Target Price / Recom, and some 'news/analyst' data when present).
-    """
     q = finvizfinance(ticker)
     fundamentals = q.ticker_fundament()
+    
+    # finviz 필드명 대소문자/띄어쓰기 변형 대응
+    recom_raw = (
+        fundamentals.get("Recom")
+        or fundamentals.get("recom")
+        or fundamentals.get("Analyst Recom")
+        or fundamentals.get("Recommendation")
+    )
+    target_raw = (
+        fundamentals.get("Target Price")
+        or fundamentals.get("target_price")
+        or fundamentals.get("Price Target")
+    )
+
     out: Dict[str, Any] = {
         "ticker": ticker,
         "sector": fundamentals.get("Sector"),
         "industry": fundamentals.get("Industry"),
         "price": safe_float(fundamentals.get("Price")),
-        "target_price": safe_float(fundamentals.get("Target Price")),
-        "recom": recom_to_score(fundamentals.get("Recom")),
+        "target_price": safe_float(target_raw),
+        "recom": recom_to_score(recom_raw),
+        "_raw_keys": list(fundamentals.keys()),  # 디버그용 (확인 후 제거)
     }
 
     try:
@@ -552,14 +564,12 @@ def parse_generated_at(meta: Dict[str, Any]) -> Optional[datetime]:
 
 
 def screen_rows(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    """
-    스크리닝:
-    - Recom 점수 2.0 이하 (기관 의견 파싱 불안정으로 buy_or_better_count 조건 제거)
-    """
     out = []
     for r in rows:
         recom = safe_float(r.get("recom_score"))
-        if recom is None or recom > 2.0:
+        if recom is None:
+            continue
+        if recom > 2.5:  # 2.0에서 2.5로 임시 완화
             continue
         out.append(r)
     return out
