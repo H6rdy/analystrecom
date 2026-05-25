@@ -1,13 +1,13 @@
 {
   "meta": {
     "source": "finviz",
-    "generated_at_utc": "2026-05-24T00:12:34Z"
+    "generated_at_utc": "2026-05-25T00:15:18Z"
   },
   "sp500_proxy": {
     "symbol": "SPY",
     "price": 745.64,
     "change_pct": 0.39,
-    "asof_utc": "2026-05-24T00:12:34Z"
+    "asof_utc": "2026-05-25T00:15:18Z"
   },
   "rows": [
     {
