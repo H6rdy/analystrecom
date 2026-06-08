@@ -1,13 +1,13 @@
 {
   "meta": {
     "source": "finviz",
-    "generated_at_utc": "2026-06-07T00:20:01Z"
+    "generated_at_utc": "2026-06-08T00:24:44Z"
   },
   "sp500_proxy": {
     "symbol": "SPY",
     "price": 737.55,
     "change_pct": -2.58,
-    "asof_utc": "2026-06-07T00:20:01Z"
+    "asof_utc": "2026-06-08T00:24:44Z"
   },
   "rows": [
     {
@@ -645,8 +645,8 @@
       "sector": "Technology",
       "industry": "Semiconductors",
       "price": 385.73,
-      "target_price": 509.2,
-      "upside_pct": 32.0094366525808,
+      "target_price": 510.25,
+      "upside_pct": 32.281647784719866,
       "upside_bucket": "30%~40%",
       "recom_score": 1.31,
       "recom_score_weighted": 1.31,
@@ -4047,8 +4047,8 @@
       "sector": "Consumer Cyclical",
       "industry": "Apparel Retail",
       "price": 114.23,
-      "target_price": 135.03,
-      "upside_pct": 18.20887682745338,
+      "target_price": 132.71,
+      "upside_pct": 16.17788671977589,
       "upside_bucket": "10%~20%",
       "recom_score": 2.97,
       "recom_score_weighted": 2.97,
@@ -5727,8 +5727,8 @@
       "sector": "Technology",
       "industry": "Computer Hardware",
       "price": 1559.32,
-      "target_price": 1775.09,
-      "upside_pct": 13.837441961880813,
+      "target_price": 1791.39,
+      "upside_pct": 14.882769412307951,
       "upside_bucket": "10%~20%",
       "recom_score": 1.64,
       "recom_score_weighted": 1.64,
@@ -5867,8 +5867,8 @@
       "sector": "Technology",
       "industry": "Computer Hardware",
       "price": 847.47,
-      "target_price": 862.23,
-      "upside_pct": 1.7416545718432541,
+      "target_price": 872.0,
+      "upside_pct": 2.894497740332991,
       "upside_bucket": "0%~10%",
       "recom_score": 1.59,
       "recom_score_weighted": 1.59,
@@ -6763,8 +6763,8 @@
       "sector": "Technology",
       "industry": "Computer Hardware",
       "price": 511.72,
-      "target_price": 535.43,
-      "upside_pct": 4.6333932619401,
+      "target_price": 541.3,
+      "upside_pct": 5.780504963651989,
       "upside_bucket": "0%~10%",
       "recom_score": 1.66,
       "recom_score_weighted": 1.66,
