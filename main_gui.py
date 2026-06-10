@@ -603,9 +603,9 @@ class MainWindow(QMainWindow):
         self._render_table(filtered)
 
     def _render_table(self, rows: List[Dict[str, Any]]) -> None:
-    self.table.setSortingEnabled(False)  # ← 추가
-    self.table.setRowCount(0)
-    tier1_set = {x.lower() for x in self.config.tier1_institutions}
+        self.table.setSortingEnabled(False)  # ← 추가
+        self.table.setRowCount(0)
+        tier1_set = {x.lower() for x in self.config.tier1_institutions}
 
         def add_item(row: int, col: int, text: str, color: Optional[QColor] = None) -> None:
             item = QTableWidgetItem(text)
