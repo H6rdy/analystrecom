@@ -1,13 +1,13 @@
 {
   "meta": {
     "source": "finviz",
-    "generated_at_utc": "2026-07-26T00:03:00Z"
+    "generated_at_utc": "2026-07-27T00:03:25Z"
   },
   "sp500_proxy": {
     "symbol": "SPY",
     "price": null,
     "change_pct": null,
-    "asof_utc": "2026-07-26T00:03:00Z"
+    "asof_utc": "2026-07-27T00:03:25Z"
   },
   "rows": []
 }
