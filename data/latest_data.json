@@ -1,13 +1,13 @@
 {
   "meta": {
     "source": "finviz",
-    "generated_at_utc": "2026-09-06T00:56:18Z"
+    "generated_at_utc": "2026-09-07T00:58:44Z"
   },
   "sp500_proxy": {
     "symbol": "SPY",
     "price": 770.19,
     "change_pct": null,
-    "asof_utc": "2026-09-06T00:56:18Z"
+    "asof_utc": "2026-09-07T00:58:44Z"
   },
   "rows": [
     {
@@ -407,8 +407,8 @@
       "sector": "Healthcare",
       "industry": "Drug Manufacturers - General",
       "price": 437.23,
-      "target_price": 397.46,
-      "upside_pct": -9.095899183496103,
+      "target_price": 396.82,
+      "upside_pct": -9.242275232715047,
       "upside_bucket": "0%~10%",
       "recom_score": 2.44,
       "recom_score_weighted": 2.44,
