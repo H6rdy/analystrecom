@@ -1,13 +1,13 @@
 {
   "meta": {
     "source": "finviz",
-    "generated_at_utc": "2026-09-13T00:55:06Z"
+    "generated_at_utc": "2026-09-14T01:02:21Z"
   },
   "sp500_proxy": {
     "symbol": "SPY",
     "price": 764.29,
     "change_pct": null,
-    "asof_utc": "2026-09-13T00:55:06Z"
+    "asof_utc": "2026-09-14T01:02:21Z"
   },
   "rows": [
     {
@@ -29,8 +29,8 @@
       "sector": "Technology",
       "industry": "Consumer Electronics",
       "price": 332.27,
-      "target_price": 334.9,
-      "upside_pct": 0.7915249646371914,
+      "target_price": 336.29,
+      "upside_pct": 1.2098594516507744,
       "upside_bucket": "0%~10%",
       "recom_score": 2.13,
       "recom_score_weighted": 2.13,
@@ -505,8 +505,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas E&P",
       "price": 44.73,
-      "target_price": 45.81,
-      "upside_pct": 2.414486921529191,
+      "target_price": 45.92,
+      "upside_pct": 2.6604068857590146,
       "upside_bucket": "0%~10%",
       "recom_score": 2.62,
       "recom_score_weighted": 2.62,
@@ -3210,8 +3210,8 @@
       "target_price": 68.68,
       "upside_pct": 10.613625382509273,
       "upside_bucket": "10%~20%",
-      "recom_score": 1.78,
-      "recom_score_weighted": 1.78,
+      "recom_score": 1.85,
+      "recom_score_weighted": 1.85,
       "buy_or_better_count": 0,
       "tier1_buy_count": 0,
       "institutions": []
@@ -3921,11 +3921,11 @@
       "sector": "Industrials",
       "industry": "Building Products & Equipment",
       "price": 366.04,
-      "target_price": 500.83,
-      "upside_pct": 36.82384438859141,
+      "target_price": 487.08,
+      "upside_pct": 33.06742432521035,
       "upside_bucket": "30%~40%",
-      "recom_score": 2.45,
-      "recom_score_weighted": 2.45,
+      "recom_score": 2.55,
+      "recom_score_weighted": 2.55,
       "buy_or_better_count": 0,
       "tier1_buy_count": 0,
       "institutions": []
@@ -4117,8 +4117,8 @@
       "sector": "Real Estate",
       "industry": "REIT - Residential",
       "price": 124.79,
-      "target_price": 143.16,
-      "upside_pct": 14.720730827790685,
+      "target_price": 143.12,
+      "upside_pct": 14.6886769773219,
       "upside_bucket": "10%~20%",
       "recom_score": 2.59,
       "recom_score_weighted": 2.59,
@@ -5548,8 +5548,8 @@
       "target_price": 275.47,
       "upside_pct": 19.38545549102888,
       "upside_bucket": "10%~20%",
-      "recom_score": 1.86,
-      "recom_score_weighted": 1.86,
+      "recom_score": 1.83,
+      "recom_score_weighted": 1.83,
       "buy_or_better_count": 0,
       "tier1_buy_count": 0,
       "institutions": []
@@ -5769,8 +5769,8 @@
       "sector": "Real Estate",
       "industry": "REIT - Retail",
       "price": 204.83,
-      "target_price": 235.82,
-      "upside_pct": 15.129619684616502,
+      "target_price": 235.41,
+      "upside_pct": 14.929453693306627,
       "upside_bucket": "10%~20%",
       "recom_score": 2.5,
       "recom_score_weighted": 2.5,
@@ -6385,8 +6385,8 @@
       "sector": "Real Estate",
       "industry": "REIT - Residential",
       "price": 35.12,
-      "target_price": 41.93,
-      "upside_pct": 19.390660592255138,
+      "target_price": 41.88,
+      "upside_pct": 19.248291571754006,
       "upside_bucket": "10%~20%",
       "recom_score": 2.52,
       "recom_score_weighted": 2.52,
