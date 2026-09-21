@@ -1,13 +1,13 @@
 {
   "meta": {
     "source": "finviz",
-    "generated_at_utc": "2026-09-20T01:02:11Z"
+    "generated_at_utc": "2026-09-21T01:09:00Z"
   },
   "sp500_proxy": {
     "symbol": "SPY",
     "price": 761.69,
     "change_pct": null,
-    "asof_utc": "2026-09-20T01:02:11Z"
+    "asof_utc": "2026-09-21T01:09:00Z"
   },
   "rows": [
     {
@@ -3893,8 +3893,8 @@
       "sector": "Consumer Cyclical",
       "industry": "Residential Construction",
       "price": 76.43,
-      "target_price": 77.92,
-      "upside_pct": 1.9494962710977282,
+      "target_price": 77.58,
+      "upside_pct": 1.5046447729948786,
       "upside_bucket": "0%~10%",
       "recom_score": 3.5,
       "recom_score_weighted": 3.5,
@@ -4313,8 +4313,8 @@
       "sector": "Basic Materials",
       "industry": "Building Materials",
       "price": 490.64,
-      "target_price": 667.61,
-      "upside_pct": 36.06921571824557,
+      "target_price": 666.57,
+      "upside_pct": 35.85724767650418,
       "upside_bucket": "30%~40%",
       "recom_score": 1.93,
       "recom_score_weighted": 1.93,
@@ -4495,8 +4495,8 @@
       "sector": "Technology",
       "industry": "Software - Infrastructure",
       "price": 493.78,
-      "target_price": 567.64,
-      "upside_pct": 14.95807849649642,
+      "target_price": 569.36,
+      "upside_pct": 15.306411762323302,
       "upside_bucket": "10%~20%",
       "recom_score": 1.25,
       "recom_score_weighted": 1.25,
@@ -4691,8 +4691,8 @@
       "sector": "Technology",
       "industry": "Software - Application",
       "price": 135.47,
-      "target_price": 144.8,
-      "upside_pct": 6.887133682734192,
+      "target_price": 145.55,
+      "upside_pct": 7.4407617922787495,
       "upside_bucket": "0%~10%",
       "recom_score": 1.35,
       "recom_score_weighted": 1.35,
@@ -5657,8 +5657,8 @@
       "sector": "Financial",
       "industry": "Capital Markets",
       "price": 105.25,
-      "target_price": 124.11,
-      "upside_pct": 17.919239904988117,
+      "target_price": 124.32,
+      "upside_pct": 18.118764845605682,
       "upside_bucket": "10%~20%",
       "recom_score": 1.62,
       "recom_score_weighted": 1.62,
@@ -5895,8 +5895,8 @@
       "sector": "Consumer Defensive",
       "industry": "Beverages - Brewers",
       "price": 118.97,
-      "target_price": 168.45,
-      "upside_pct": 41.590316886610054,
+      "target_price": 167.77,
+      "upside_pct": 41.01874422123226,
       "upside_bucket": "40%~50%",
       "recom_score": 2.04,
       "recom_score_weighted": 2.04,
