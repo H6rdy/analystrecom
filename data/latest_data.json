@@ -1,13 +1,13 @@
 {
   "meta": {
     "source": "finviz",
-    "generated_at_utc": "2026-09-27T01:23:55Z"
+    "generated_at_utc": "2026-09-28T01:43:48Z"
   },
   "sp500_proxy": {
     "symbol": "SPY",
     "price": 771.35,
     "change_pct": null,
-    "asof_utc": "2026-09-27T01:23:55Z"
+    "asof_utc": "2026-09-28T01:43:48Z"
   },
   "rows": [
     {
@@ -589,8 +589,8 @@
       "sector": "Real Estate",
       "industry": "REIT - Office",
       "price": 49.93,
-      "target_price": 53.43,
-      "upside_pct": 7.009813739234927,
+      "target_price": 53.14,
+      "upside_pct": 6.429000600841173,
       "upside_bucket": "0%~10%",
       "recom_score": 3.18,
       "recom_score_weighted": 3.18,
@@ -1597,8 +1597,8 @@
       "sector": "Healthcare",
       "industry": "Diagnostics & Research",
       "price": 292.84,
-      "target_price": 308.21,
-      "upside_pct": 5.2485999180439835,
+      "target_price": 310.71,
+      "upside_pct": 6.10230842781041,
       "upside_bucket": "0%~10%",
       "recom_score": 1.85,
       "recom_score_weighted": 1.85,
@@ -3053,8 +3053,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Equipment & Services",
       "price": 32.76,
-      "target_price": 43.54,
-      "upside_pct": 32.905982905982924,
+      "target_price": 43.75,
+      "upside_pct": 33.54700854700856,
       "upside_bucket": "30%~40%",
       "recom_score": 1.78,
       "recom_score_weighted": 1.78,
@@ -4274,8 +4274,8 @@
       "target_price": 788.79,
       "upside_pct": 4.93973339009659,
       "upside_bucket": "0%~10%",
-      "recom_score": 1.27,
-      "recom_score_weighted": 1.27,
+      "recom_score": 1.33,
+      "recom_score_weighted": 1.33,
       "buy_or_better_count": 0,
       "tier1_buy_count": 0,
       "institutions": []
@@ -4649,8 +4649,8 @@
       "sector": "Utilities",
       "industry": "Utilities - Regulated Gas",
       "price": 39.42,
-      "target_price": 50.38,
-      "upside_pct": 27.803145611364787,
+      "target_price": 50.08,
+      "upside_pct": 27.04211060375443,
       "upside_bucket": "20%~30%",
       "recom_score": 1.61,
       "recom_score_weighted": 1.61,
@@ -4663,8 +4663,8 @@
       "sector": "Consumer Cyclical",
       "industry": "Footwear & Accessories",
       "price": 35.75,
-      "target_price": 45.78,
-      "upside_pct": 28.05594405594405,
+      "target_price": 45.54,
+      "upside_pct": 27.384615384615387,
       "upside_bucket": "20%~30%",
       "recom_score": 2.77,
       "recom_score_weighted": 2.77,
