@@ -1,13 +1,13 @@
 {
   "meta": {
     "source": "finviz",
-    "generated_at_utc": "2026-10-18T00:42:24Z"
+    "generated_at_utc": "2026-10-19T00:55:34Z"
   },
   "sp500_proxy": {
     "symbol": "SPY",
     "price": 763.25,
     "change_pct": null,
-    "asof_utc": "2026-10-18T00:42:24Z"
+    "asof_utc": "2026-10-19T00:55:34Z"
   },
   "rows": [
     {
@@ -155,8 +155,8 @@
       "sector": "Energy",
       "industry": "Oil & Gas Integrated",
       "price": 178.98,
-      "target_price": 175.26,
-      "upside_pct": -2.0784445189406586,
+      "target_price": 175.52,
+      "upside_pct": -1.9331768912727587,
       "upside_bucket": "0%~10%",
       "recom_score": 2.41,
       "recom_score_weighted": 2.41,
