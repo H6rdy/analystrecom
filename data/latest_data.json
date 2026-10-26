@@ -1,13 +1,13 @@
 {
   "meta": {
     "source": "finviz",
-    "generated_at_utc": "2026-10-25T00:54:49Z"
+    "generated_at_utc": "2026-10-26T01:02:46Z"
   },
   "sp500_proxy": {
     "symbol": "SPY",
     "price": 759.97,
     "change_pct": null,
-    "asof_utc": "2026-10-25T00:54:49Z"
+    "asof_utc": "2026-10-26T01:02:46Z"
   },
   "rows": [
     {
@@ -15,8 +15,8 @@
       "sector": "Technology",
       "industry": "Consumer Electronics",
       "price": 347.73,
-      "target_price": 335.44,
-      "upside_pct": -3.5343513645644697,
+      "target_price": 335.64,
+      "upside_pct": -3.4768354758001996,
       "upside_bucket": "0%~10%",
       "recom_score": 2.2,
       "recom_score_weighted": 2.2,
