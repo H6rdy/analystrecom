@@ -1,13 +1,13 @@
 {
   "meta": {
     "source": "finviz",
-    "generated_at_utc": "2026-10-31T02:06:31Z"
+    "generated_at_utc": "2026-11-01T01:58:17Z"
   },
   "sp500_proxy": {
     "symbol": "SPY",
     "price": 755.72,
     "change_pct": null,
-    "asof_utc": "2026-10-31T02:06:31Z"
+    "asof_utc": "2026-11-01T01:58:18Z"
   },
   "rows": [
     {
@@ -141,8 +141,8 @@
       "sector": "Financial",
       "industry": "Credit Services",
       "price": 413.59,
-      "target_price": 448.71,
-      "upside_pct": 8.49150124519451,
+      "target_price": 450.29,
+      "upside_pct": 8.87352208709109,
       "upside_bucket": "0%~10%",
       "recom_score": 1.42,
       "recom_score_weighted": 1.42,
@@ -211,8 +211,8 @@
       "sector": "Financial",
       "industry": "Credit Services",
       "price": 638.01,
-      "target_price": 706.47,
-      "upside_pct": 10.730239337941416,
+      "target_price": 708.42,
+      "upside_pct": 11.035877180608455,
       "upside_bucket": "10%~20%",
       "recom_score": 1.43,
       "recom_score_weighted": 1.43,
@@ -281,8 +281,8 @@
       "sector": "Healthcare",
       "industry": "Drug Manufacturers - General",
       "price": 294.89,
-      "target_price": 296.96,
-      "upside_pct": 0.7019566618061024,
+      "target_price": 298.88,
+      "upside_pct": 1.353046898843635,
       "upside_bucket": "0%~10%",
       "recom_score": 1.62,
       "recom_score_weighted": 1.62,
