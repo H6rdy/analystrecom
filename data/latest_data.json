@@ -1,13 +1,13 @@
 {
   "meta": {
     "source": "finviz",
-    "generated_at_utc": "2026-11-01T01:58:17Z"
+    "generated_at_utc": "2026-11-02T02:10:31Z"
   },
   "sp500_proxy": {
     "symbol": "SPY",
     "price": 755.72,
     "change_pct": null,
-    "asof_utc": "2026-11-01T01:58:18Z"
+    "asof_utc": "2026-11-02T02:10:31Z"
   },
   "rows": [
     {
@@ -85,8 +85,8 @@
       "sector": "Communication Services",
       "industry": "Internet Content & Information",
       "price": 279.84,
-      "target_price": 399.96,
-      "upside_pct": 42.9245283018868,
+      "target_price": 400.28,
+      "upside_pct": 43.03887935963409,
       "upside_bucket": "40%~50%",
       "recom_score": 1.28,
       "recom_score_weighted": 1.28,
