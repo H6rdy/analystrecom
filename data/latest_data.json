@@ -1,13 +1,13 @@
 {
   "meta": {
     "source": "finviz",
-    "generated_at_utc": "2026-11-07T02:36:15Z"
+    "generated_at_utc": "2026-11-08T02:06:48Z"
   },
   "sp500_proxy": {
     "symbol": "SPY",
     "price": 735.29,
     "change_pct": null,
-    "asof_utc": "2026-11-07T02:36:15Z"
+    "asof_utc": "2026-11-08T02:06:48Z"
   },
   "rows": [
     {
@@ -29,11 +29,11 @@
       "sector": "Technology",
       "industry": null,
       "price": 530.61,
-      "target_price": 637.11,
-      "upside_pct": 20.07123876293322,
+      "target_price": 639.49,
+      "upside_pct": 20.519779122142445,
       "upside_bucket": "20%~30%",
-      "recom_score": 1.27,
-      "recom_score_weighted": 1.27,
+      "recom_score": 1.28,
+      "recom_score_weighted": 1.28,
       "buy_or_better_count": 0,
       "tier1_buy_count": 0,
       "institutions": []
@@ -57,11 +57,11 @@
       "sector": "Consumer Cyclical",
       "industry": null,
       "price": 259.3,
-      "target_price": 328.09,
-      "upside_pct": 26.529116853065936,
+      "target_price": 327.44,
+      "upside_pct": 26.278441959120702,
       "upside_bucket": "20%~30%",
-      "recom_score": 1.25,
-      "recom_score_weighted": 1.25,
+      "recom_score": 1.26,
+      "recom_score_weighted": 1.26,
       "buy_or_better_count": 0,
       "tier1_buy_count": 0,
       "institutions": []
@@ -211,11 +211,11 @@
       "sector": "Financial",
       "industry": null,
       "price": 652.7,
-      "target_price": 721.89,
-      "upside_pct": 10.60058219702773,
+      "target_price": 726.65,
+      "upside_pct": 11.329860579132811,
       "upside_bucket": "10%~20%",
-      "recom_score": 1.48,
-      "recom_score_weighted": 1.48,
+      "recom_score": 1.49,
+      "recom_score_weighted": 1.49,
       "buy_or_better_count": 0,
       "tier1_buy_count": 0,
       "institutions": []
