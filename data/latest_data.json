@@ -1,13 +1,13 @@
 {
   "meta": {
     "source": "finviz",
-    "generated_at_utc": "2026-11-08T02:06:48Z"
+    "generated_at_utc": "2026-11-09T02:28:02Z"
   },
   "sp500_proxy": {
     "symbol": "SPY",
     "price": 735.29,
     "change_pct": null,
-    "asof_utc": "2026-11-08T02:06:48Z"
+    "asof_utc": "2026-11-09T02:28:02Z"
   },
   "rows": [
     {
@@ -158,8 +158,8 @@
       "target_price": 184.83,
       "upside_pct": 11.430638451799613,
       "upside_bucket": "10%~20%",
-      "recom_score": 2.45,
-      "recom_score_weighted": 2.45,
+      "recom_score": 2.43,
+      "recom_score_weighted": 2.43,
       "buy_or_better_count": 0,
       "tier1_buy_count": 0,
       "institutions": []
